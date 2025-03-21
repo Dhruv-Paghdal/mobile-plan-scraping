@@ -1,0 +1,184 @@
+.header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+padding: 20px 10%;
+background: black;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 100;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; 
+    text-decoration: none; /* Optional: Remove underline from anchor */
+}
+
+.logo-img {
+    width: 40px; 
+    height: auto;
+    margin-bottom: 5px; 
+}
+
+.logo-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: white; 
+    text-align: center;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+
+}
+
+.navbar a:hover::before {
+    width: 100%;
+
+}
+
+/* Base Header Styling */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  /* Logo Styles */
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .logo-img {
+    width: 40px;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  
+  .logo-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Navbar Links */
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar a {
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: 0.3s;
+  }
+  
+  .navbar a:hover::before {
+    width: 100%;
+  }
+
+  .hamburger-wrapper {
+position: realtive;
+width: 37px;
+height: 37px;
+background: black;
+box-shadow:
+   0 0 5px #fff,
+   0 0 6px #fff,
+   0 0 7px #fff,
+   0 0 8px #fff;
+border-radius: 10px;
+cursor: pointer;
+display: flex;
+ 
+  }
+
+.hamburger-icon {
+    position: relative;
+    width: 23px;
+    height: 17px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    
+}
+
+.hamburger-icon span{
+    position: absolute;
+    display: block;
+    height: 7px;
+    background: linear-gradient(45deg,#fff, #000);
+    border: 2px solid #fff;
+    border-radius: 5px;
+    box-shadow: 
+    0 0 2px #fff,
+    0 0 1px #fff;
+}
+
+.hamburger-icon span:nth-child(1){
+    top: 0;
+    left: 0;
+    width: 50%;
+}
+
+.hamburger-wrapper.active span:nth-child(1){
+width: 100%;
+}
+
+.hamburger-icon span:nth-child(2){
+    width: 100%;
+    transform: scaleX(1);
+}
+
+.hamburger-wrapper.active span:nth-child(2){
+    transform: scaleX(0);
+}
+.hamburger-icon span:nth-child(3){
+   bottom: 0;
+    right:0;
+    width: 50%;
+}
