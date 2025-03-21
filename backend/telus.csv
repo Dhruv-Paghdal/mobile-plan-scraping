@@ -1,0 +1,8 @@
+Data ,Price ,Type(4g/5g),Countries Allowed,Calls,Texts
+100 GB,54,5g(250 mbps speed),Canada,Unlimited,Unlimited
+125 GB ,60,5g(1 gbps speed),Canada-US-Mexico,Unlimited,Unlimited
+100 GB,65,5g(1 gbps speed),Canada,Unlimited,Unlimited
+125 GB ,70,5g(1 gbps speed),Canada,Unlimited,Unlimited
+150 GB,75,5g(1 gbps speed),Canada-US,Unlimited,Unlimited
+200 GB,85,5g(2 gbps speed),Canada-US-Mexico,Unlimited,Unlimited
+-,30,-,Canada,Unlimited,Unlimited
