@@ -18,9 +18,9 @@ body {
   background-color: #020724;
   background-image: url('./assets/background.png');
   background-repeat: no-repeat;
-  background-position: 88% 60%; /* Slightly more right, slightly down */
-  background-size: 500px auto;
-  min-height: 100vh;
+  background-position: 85% 15%; /* Slightly more right, slightly down */
+  background-size: 670px auto;
+  min-height: 90vh;
 }
 
 a{

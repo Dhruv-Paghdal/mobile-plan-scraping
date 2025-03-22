@@ -144,9 +144,13 @@ display: flex;
     margin: auto;
     display: flex;
     align-items: center;
-    
+    transform: rotate(0);
+    transition: 1s;
 }
 
+.hamburger-wrapper.active .hamburger-icon{
+  transform: rotate(315deg);
+}
 .hamburger-icon span{
     position: absolute;
     display: block;
@@ -157,28 +161,46 @@ display: flex;
     box-shadow: 
     0 0 2px #fff,
     0 0 1px #fff;
+    transition: .3s;
+    transition-delay: 1s;
 }
 
 .hamburger-icon span:nth-child(1){
     top: 0;
     left: 0;
     width: 50%;
+    transform: translateY(0);
 }
+
 
 .hamburger-wrapper.active span:nth-child(1){
 width: 100%;
+transform: translateY(4px);
+transition-delay: 0;
+
 }
 
 .hamburger-icon span:nth-child(2){
     width: 100%;
     transform: scaleX(1);
+    opacity: 1;
 }
 
 .hamburger-wrapper.active span:nth-child(2){
     transform: scaleX(0);
+    opacity: 0;
+    transition-delay: 0;
 }
 .hamburger-icon span:nth-child(3){
    bottom: 0;
     right:0;
     width: 50%;
+    transform: rotate(0);
+}
+
+.hamburger-wrapper.active span:nth-child(3){
+ bottom: 6px;
+ width: 100%;
+ transform: rotate(90deg);
+ transition-delay: 0;
 }
