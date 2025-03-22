@@ -1,19 +1,18 @@
 package com.example.mobilePlanAPI;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.io.IOException;
+import java.util.List;
 
 import static com.example.mobilePlanAPI.GetAllPlans.readSpecificCSV;
+import static com.example.mobilePlanAPI.InputSpellCheck.checkInputAndGetSuggestion;
 
 @RestController
 public class Controller {
 
-    @PostMapping ("/get-all-plans")
-    public String getAllPlans(@RequestBody Map<String, String> request){
-        String companyName = request.get("companyName");
+    @GetMapping("/get-all-plans")
+    public String getAllPlans(@RequestParam String companyName){
         String fileToRead;
         switch(companyName) {
             case "freedom":
@@ -38,4 +37,9 @@ public class Controller {
         return response;
     }
 
+    @GetMapping("/spell-check")
+    public List<String> checkInput(@RequestParam String input) throws IOException {
+        List<String> response = checkInputAndGetSuggestion(input);
+        return response;
+    }
 }
