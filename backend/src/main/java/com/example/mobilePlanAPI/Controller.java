@@ -9,13 +9,17 @@ import java.util.Map.Entry;
 
 import static com.example.mobilePlanAPI.GetAllPlans.readSpecificCSV;
 import static com.example.mobilePlanAPI.InputSpellCheck.checkInputAndGetSuggestion;
+import static com.example.mobilePlanAPI.PageRanking.getPageRank;
 
+//Controller to handle the end-points
 @RestController
 public class Controller {
 
+    //Method to get data of each provider
     @GetMapping("/get-all-plans")
     public String getAllPlans(@RequestParam String companyName){
         String fileToRead;
+        //Switching based on company name
         switch(companyName) {
             case "freedom":
                 fileToRead = "freedom.csv";
@@ -35,16 +39,20 @@ public class Controller {
             default:
                 fileToRead = "freedom.csv";
         }
+        //Getting the response
         String response = readSpecificCSV(fileToRead);
         return response;
     }
 
+    //Method to check the spelling and provide suggestions
     @GetMapping("/spell-check")
     public List<String> checkInput(@RequestParam String input) throws IOException {
+        //Getting the response
         List<String> response = checkInputAndGetSuggestion(input);
         return response;
     }
 
+    //Method to get suggestion for word completion
     @GetMapping("/getsuggestion")
     public List<String> getWordSuggestion(@RequestParam String text) {
 
@@ -84,5 +92,12 @@ public class Controller {
         }
 
         return sorted_suggestions;
+    }
+
+    //Method to display final result based on page ranking
+    @GetMapping("/page-ranking")
+    public String getPageRanking(@RequestParam String input){
+        //Getting the response
+        return getPageRank(input);
     }
 }

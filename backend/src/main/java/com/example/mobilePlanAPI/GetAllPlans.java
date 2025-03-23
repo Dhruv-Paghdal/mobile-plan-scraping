@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GetAllPlans {
+    //Method to read specific csv file and generate the response
     public static String readSpecificCSV(String filePath) {
         StringBuilder jsonRes = new StringBuilder("[");
-        try (BufferedReader br = new BufferedReader(new FileReader("/home/shubh/Desktop/mobile-plan-scraping/backend/" + filePath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String headerLine = br.readLine();
             if (headerLine == null) {
                 return "[]";
@@ -29,6 +30,7 @@ public class GetAllPlans {
                 firstLine = false;
                 String[] values = line.split(",");
                 jsonRes.append("\n  {");
+                jsonRes.append("\"Company\" : \"" + filePath.replace(".csv", "") + "\",");
                 for (int i = 0; i < headers.length; i++) {
                     jsonRes.append("\"").append(headers[i].trim()).append("\": ")
                             .append("\"").append(values[i].trim()).append("\"");
@@ -51,11 +53,11 @@ public class GetAllPlans {
         List<String> ls = new ArrayList<>();
         String[] nextRecord;
 
-        String[] filenames = {"freedom.csv", "bell.csv"};
+        String[] filenames = {"bell.csv", "telus.csv", "freedom.csv", "rogers.csv", "virgin.csv"};
 
         for(String file : filenames) {
             try {
-                CSVReader reader = new CSVReader(new FileReader("/home/shubh/Desktop/mobile-plan-scraping/backend/"+file));
+                CSVReader reader = new CSVReader(new FileReader(file));
 
                 while((nextRecord = reader.readNext()) != null) {
                     for(String record: nextRecord) {
