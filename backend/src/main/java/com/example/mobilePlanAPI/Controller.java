@@ -63,25 +63,29 @@ public class Controller {
 
         Dictionary dict = new Dictionary();
         GetAllPlans gap = new GetAllPlans();
-        SearchFrequency sf = new SearchFrequency();
+        FrequencyCount sf = new FrequencyCount();
 
+        // function call to extract unique words from the files
         List<String> planWords = gap.convertStringtoWords();
         int val=0;
 
+        // words extracted from the files are put into trie to create a vocabulary/dictionary
         for(String word: planWords) {
             dict.put(word, val++);
             sf.insert(word);
         }
 
+        //words matching a prefix are stored in a temporary DS
         for(Object w : dict.keysWithPrefix(text)) {
-
             temptable.put((String) w, sf.search((String) w));
         }
 
+        // get the frequency count of the suggestion words
         for (Map.Entry<String, Integer> entry : temptable.entrySet()) {
             suggestions.add(entry.getValue());
         }
 
+        // sort words based on the frequency count
         Collections.sort(suggestions, Collections.reverseOrder());
         for (int num : suggestions) {
             for (Entry<String, Integer> entry : temptable.entrySet()) {

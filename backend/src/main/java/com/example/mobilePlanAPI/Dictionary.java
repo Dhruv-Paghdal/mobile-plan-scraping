@@ -2,11 +2,7 @@ package com.example.mobilePlanAPI;
 
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public class Dictionary<Value> {
