@@ -2,7 +2,7 @@ package com.example.mobilePlanAPI;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.*;
 import java.util.Map.Entry;
@@ -100,8 +100,48 @@ public class Controller {
 
     //Method to display final result based on page ranking
     @GetMapping("/page-ranking")
-    public String getPageRanking(@RequestParam String input){
+    public String getPageRanking(@RequestParam String input) throws IOException {
+
+        HashMap<String, Integer> m = new HashMap<>();
+        File file = new File("/home/shubh/Documents/freq.txt");
+        FileWriter fw = new FileWriter(file, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String st;
+        int flag = 0;
+
+        while ((st = br.readLine()) != null) {
+            String[] temp = st.split(" ");
+            m.put(temp[0], Integer.valueOf(temp[1]));
+            if(temp[0].equals(input)) {
+                flag = 1;
+                break;
+            }
+        }
+
+        if(flag == 1) {
+            for(String key: m.keySet()) {
+                if(key.equals(input))
+                    bw.write(key + " " + m.get(key)+1);
+                bw.write(key + " " + m.get(key));
+            }
+        }
+
         //Getting the response
         return getPageRank(input);
+    }
+
+    @GetMapping("/search-freq")
+    public List<String> searchFreq() throws IOException {
+        SearchFrequency sf = new SearchFrequency();
+        List<String> l = new ArrayList<>();
+        sf.createMap();
+        for(String w: sf.mostSearchedWords()) {
+            l.add(w);
+        }
+
+        return l;
     }
 }
