@@ -73,7 +73,7 @@ public class SearchFrequency {
 
         // Creating an object of BufferedReader class
         BufferedReader bfro = new BufferedReader(
-                new FileReader("/home/shubh/Documents/freq.txt"));
+                new FileReader("freq.txt"));
 
         // Declaring a string variable
         String st;
@@ -94,6 +94,47 @@ public class SearchFrequency {
         }
 
     }
+
+    public static Map<String, Integer> readFile(String fileName) throws IOException {
+        Map<String, Integer> wordMap = new HashMap<>();
+        File file = new File(fileName);
+
+        // Check if file exists, if not create one
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+
+        // Read each line and parse data
+        while ((line = br.readLine()) != null) {
+            String[] pairs = line.split(",");
+            for (String pair : pairs) {
+                String[] parts = pair.trim().split(" ");
+                if (parts.length == 2) {
+                    String word = parts[0].trim();
+                    int count = Integer.parseInt(parts[1].trim());
+                    wordMap.put(word, count);
+                }
+            }
+        }
+        br.close();
+        return wordMap;
+    }
+
+    public static void writeFile(String fileName, Map<String, Integer> wordMap) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+
+        for (Map.Entry<String, Integer> entry : wordMap.entrySet()) {
+            bw.write(entry.getKey() + " " + entry.getValue());
+            bw.write("\n");
+        }
+
+        // Remove trailing comma and space
+        bw.close();
+    }
+
 
 }
 

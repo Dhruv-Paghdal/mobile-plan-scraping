@@ -10,6 +10,8 @@ import java.util.Map.Entry;
 import static com.example.mobilePlanAPI.GetAllPlans.readSpecificCSV;
 import static com.example.mobilePlanAPI.InputSpellCheck.checkInputAndGetSuggestion;
 import static com.example.mobilePlanAPI.PageRanking.getPageRank;
+import static com.example.mobilePlanAPI.SearchFrequency.readFile;
+import static com.example.mobilePlanAPI.SearchFrequency.writeFile;
 
 //Controller to handle the end-points
 @RestController
@@ -102,34 +104,17 @@ public class Controller {
     @GetMapping("/page-ranking")
     public String getPageRanking(@RequestParam String input) throws IOException {
 
-        HashMap<String, Integer> m = new HashMap<>();
-        File file = new File("/home/shubh/Documents/freq.txt");
-        FileWriter fw = new FileWriter(file, true);
-        BufferedWriter bw = new BufferedWriter(fw);
-
-        FileReader fr = new FileReader(file);
-        BufferedReader br = new BufferedReader(fr);
-        String st;
-        int flag = 0;
-
-        while ((st = br.readLine()) != null) {
-            String[] temp = st.split(" ");
-            m.put(temp[0], Integer.valueOf(temp[1]));
-            if(temp[0].equals(input)) {
-                flag = 1;
-                break;
-            }
+        Map<String, Integer> wordMap = readFile("freq.txt");
+        if (wordMap.containsKey(input)) {
+            // Increment the count
+            wordMap.put(input, wordMap.get(input) + 1);
+        } else {
+            // Add a new word with count 1
+            wordMap.put(input, 1);
         }
 
-        if(flag == 1) {
-            for(String key: m.keySet()) {
-                if(key.equals(input))
-                    bw.write(key + " " + m.get(key)+1);
-                bw.write(key + " " + m.get(key));
-            }
-        }
-
-        //Getting the response
+        // Write updated content back to the file
+        writeFile("freq.txt", wordMap);
         return getPageRank(input);
     }
 
