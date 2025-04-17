@@ -1,0 +1,232 @@
+/* Container for the search bar, filter, and additional content */
+.sf-container {
+  margin-top: 100px; /* Space below the fixed navbar */
+  padding: 40px 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  position: relative;
+  z-index: 1100;
+}
+
+/* Wrapper for search bar and filter (new) */
+.sf-main-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px; /* Space between search bar and filter */
+  width: 100%;
+  max-width: 800px; /* Adjust to fit both search bar and filter */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Wrapper for the search bar and dropdown */
+.sf-search-wrapper {
+  flex: 1; /* Take available space */
+  min-width: 250px; /* Minimum width for responsiveness */
+  position: relative;
+  padding: 0;
+}
+
+/* Search bar styling */
+.sf-search-bar {
+  padding: 12px 18px;
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: #1e1e1e;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Focus state for search bar */
+.sf-search-bar:focus {
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Suggestions dropdown */
+.sf-search-wrapper ul.sf-suggestions-list {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #252537;
+  border: 1px solid #444;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1200;
+  box-sizing: border-box;
+}
+
+/* Individual suggestion items */
+.sf-search-wrapper ul.sf-suggestions-list li.sf-suggestion-item {
+  padding: 10px 20px;
+  color: #e0e0e0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  background: transparent;
+  border-bottom: 1px solid #333;
+  text-transform: capitalize;
+}
+
+/* Remove separator for last item */
+.sf-search-wrapper ul.sf-suggestions-list li.sf-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover effect for suggestion items */
+.sf-search-wrapper ul.sf-suggestions-list li.sf-suggestion-item:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* Filter wrapper (new) */
+.sf-filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between filter elements */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Filter select and input styling (new) */
+.sf-filter-select,
+.sf-filter-input {
+  padding: 12px 18px; /* Match search bar padding */
+  font-size: 16px; /* Match search bar font size */
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: #1e1e1e; /* Match search bar background */
+  color: #fff; /* Match search bar text color */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1); /* Match search bar shadow */
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease; /* Match search bar transition */
+}
+
+/* Focus state for filter select and input (new) */
+.sf-filter-select:focus,
+.sf-filter-input:focus {
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Match search bar focus */
+}
+
+/* Specific widths for filter elements (new) */
+.sf-filter-select {
+  min-width: 120px; /* Minimum width for dropdown */
+}
+
+.sf-filter-input {
+  width: 150px; /* Fixed width for input */
+}
+
+/* Filter button styling (new) */
+.sf-filter-button {
+  padding: 12px 18px; /* Match search bar padding */
+  font-size: 16px; /* Match search bar font size */
+  background: #007bff; /* Blue to match theme */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1); /* Match search bar shadow */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for filter button (new) */
+.sf-filter-button:hover {
+  background: #0056b3; /* Darker blue on hover */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Spell-check suggestion styling */
+.sf-spell-check {
+  margin-top: 10px;
+  font-size: 15px;
+  color: white !important;
+  text-align: left;
+  background: transparent;
+  z-index: 1100;
+  width: 100%;
+  max-width: 500px; /* Match original search bar width */
+}
+
+/* Spell-check suggestion links */
+.sf-spell-suggestion {
+  color: rgb(255, 255, 255) !important;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+.sf-spell-suggestion:hover {
+  color: rgba(245, 245, 245, 0.612) !important;
+}
+
+/* Styles for the most searched words section */
+.sf-most-searched {
+  margin-top: 15px;
+  font-size: 15px;
+  color: #fff;
+  width: 100%;
+  max-width: 500px; /* Match original search bar width */
+  text-align: left;
+}
+
+.sf-most-searched p {
+  margin: 0;
+}
+
+.sf-most-searched-word {
+  color: #ccc;
+}
+
+/* Optional styles (unchanged) */
+.sf-box-container {
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 100%;
+  max-width: 500px;
+  height: 250px;
+}
+
+.sf-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sf-results {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 15px 20px;
+}
+
+.sf-result-item {
+  background: #2a2a2a;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 120px;
+}
+
+.sf-result-item:hover {
+  background: #333;
+}
+
+.sf-filter-wrapper .fetch-plans-btn {
+  margin-left: 10px; /* Space between Apply and Fetch buttons */
+}
