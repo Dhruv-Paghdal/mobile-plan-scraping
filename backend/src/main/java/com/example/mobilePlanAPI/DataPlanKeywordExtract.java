@@ -7,7 +7,7 @@ import java.util.*;
 
 public class DataPlanKeywordExtract {
     public void parseCSV(String dataPlanFileName, DataPlanAVLTree dataPlanAvlTree) {
-        try (BufferedReader objectBufferedReader = new BufferedReader(new FileReader(dataPlanFileName))) {
+        try (BufferedReader objectBufferedReader = new BufferedReader(new FileReader("/home/shubh/Desktop/mobile-plan-scraping/backend/"+dataPlanFileName))) {
             String lineOfFile;
             while ((lineOfFile = objectBufferedReader.readLine()) != null) {
                 String[] rows = lineOfFile.split(",");

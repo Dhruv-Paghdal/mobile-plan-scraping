@@ -73,7 +73,7 @@ public class SearchFrequency {
 
         // Creating an object of BufferedReader class
         BufferedReader bfro = new BufferedReader(
-                new FileReader("freq.txt"));
+                new FileReader("/home/shubh/Desktop/mobile-plan-scraping/backend/freq.txt"));
 
         // Declaring a string variable
         String st;

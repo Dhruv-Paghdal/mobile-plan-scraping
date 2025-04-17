@@ -12,11 +12,11 @@ public class InputSpellCheck {
         List<String> suggestions = new ArrayList<>();
         CHT v = new CHT();
         //Building vocabulary using cuckoo hash table
-        buildVocabulary("bell.csv");
-        buildVocabulary("telus.csv");
-        buildVocabulary("freedom.csv");
-        buildVocabulary("rogers.csv");
-        buildVocabulary("virgin.csv");
+        buildVocabulary("/home/shubh/Desktop/mobile-plan-scraping/backend/bell.csv");
+        buildVocabulary("/home/shubh/Desktop/mobile-plan-scraping/backend/telus.csv");
+        buildVocabulary("/home/shubh/Desktop/mobile-plan-scraping/backend/freedom.csv");
+        buildVocabulary("/home/shubh/Desktop/mobile-plan-scraping/backend/rogers.csv");
+        buildVocabulary("/home/shubh/Desktop/mobile-plan-scraping/backend/virgin.csv");
         if (v.cts(inputFromUser)) {
             suggestions.add("Correct Input");
         } else {

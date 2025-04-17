@@ -1,5 +1,6 @@
 package com.example.mobilePlanAPI;
 
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
@@ -16,6 +17,25 @@ import static com.example.mobilePlanAPI.SearchFrequency.writeFile;
 //Controller to handle the end-points
 @RestController
 public class Controller {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "It is working";
+    }
+
+    @GetMapping("/get-plans")
+    public Map<String, Object> getPlans() {
+
+        try {
+            Crawling crawling = new Crawling();
+            JSONObject j = crawling.getPlans();
+            System.out.println(j);
+            return j.toMap();
+        } catch (Exception e) {
+            return new JSONObject("error", "Some error occurred.").toMap();
+        }
+
+    }
 
     //Method to get data of each provider
     @GetMapping("/get-all-plans")
@@ -104,7 +124,7 @@ public class Controller {
     @GetMapping("/page-ranking")
     public String getPageRanking(@RequestParam String input) throws IOException {
 
-        Map<String, Integer> wordMap = readFile("freq.txt");
+        Map<String, Integer> wordMap = readFile("/home/shubh/Desktop/mobile-plan-scraping/backend/freq.txt");
         if (wordMap.containsKey(input)) {
             // Increment the count
             wordMap.put(input, wordMap.get(input) + 1);
@@ -114,7 +134,7 @@ public class Controller {
         }
 
         // Write updated content back to the file
-        writeFile("freq.txt", wordMap);
+        writeFile("/home/shubh/Desktop/mobile-plan-scraping/backend/freq.txt", wordMap);
         return getPageRank(input);
     }
 

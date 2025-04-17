@@ -15,7 +15,7 @@ public class GetAllPlans {
     //Method to read specific csv file and generate the response
     public static String readSpecificCSV(String filePath) {
         StringBuilder jsonRes = new StringBuilder("[");
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("/home/shubh/Desktop/mobile-plan-scraping/backend/"+filePath))) {
             String headerLine = br.readLine();
             if (headerLine == null) {
                 return "[]";
@@ -57,7 +57,7 @@ public class GetAllPlans {
 
         for(String file : filenames) {
             try {
-                CSVReader reader = new CSVReader(new FileReader(file));
+                CSVReader reader = new CSVReader(new FileReader("/home/shubh/Desktop/mobile-plan-scraping/backend/"+file));
 
                 while((nextRecord = reader.readNext()) != null) {
                     for(String record: nextRecord) {
