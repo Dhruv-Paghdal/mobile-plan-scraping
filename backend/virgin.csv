@@ -1,6 +1,6 @@
-Data,Price,Type(4g/5g),Countries,Calls,Text
-50GB,55,5G,Canada,Unlimited,Unlimited
-75GB,45,5G,Canada,Unlimited,Unlimited
-250MB,19,5G,Canada,100 minutes,Unlimited
-3GB,39,5G,Canada,Unlimited,Unlimited
--,30,4G,Canada,Unlimited,Unlimited
+Data,Price,Type(4g/5g),Countries,Features
+60GB,$39,4G,Canada,Unlimited,Unlimited
+80GB,$55,4G,Canada,Unlimited,Unlimited
+250MB,$19,3G,Canada,100 minutes,Unlimited
+3GB,$39,3G,Canada,Unlimited,Unlimited
+-,$25,-,Canada,Unlimited,Unlimited

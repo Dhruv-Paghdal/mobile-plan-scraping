@@ -1,7 +1,7 @@
 Data,Price,Type(4g/5g),Countries,Calls,Text
-100GB,45,5G,Canada,Unlimited,Unlimited
-125GB,55,5G,Canada-Mexico-USA,Unlimited,Unlimited
-200GB,75,5G,"Canada-Mexico,-USA",Unlimited,Unlimited
-100GB,49,5G,Canada,Unlimited,Unlimited
-125GB,55,5G,Canada-Mexico-USA,Unlimited,Unlimited
-150GB,60,5G,Canada-USA,Unlimited,Unlimited
+100GB,$45,5G,Canada,Unlimited,Unlimited
+125GB,$55,5G,Canada-Mexico-USA,Unlimited,Unlimited
+200GB,$75,5G,"Canada-Mexico,-USA",Unlimited,Unlimited
+100GB,$49,5G,Canada,Unlimited,Unlimited
+125GB,$55,5G,Canada-Mexico-USA,Unlimited,Unlimited
+150GB,$60,5G,Canada-USA,Unlimited,Unlimited
